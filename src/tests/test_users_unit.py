@@ -68,11 +68,6 @@ def test_add_user_duplicate_email(test_app, monkeypatch):
     )
     monkeypatch.setattr(src.api.users.views, "add_user", mock_add_user)
     client = test_app.test_client()
-    client.post(
-        "/users",
-        data=json.dumps({"username": "michael", "email": "michael@testdriven.io"}),
-        content_type="application/json",
-    )
     resp = client.post(
         "/users",
         data=json.dumps({"username": "michael", "email": "michael@testdriven.io"}),
